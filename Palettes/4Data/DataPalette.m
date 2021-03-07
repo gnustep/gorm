@@ -228,11 +228,10 @@ int defaultDateFormatIndex = 3;
   [originalWindow setTitle: @"Data Views"];
   contents = [originalWindow contentView];
 
-/*******************/
-/* First Column... */
-/*******************/
-
-
+  /*******************/
+  /* First Column... */
+  /*******************/
+  
   // NSScrollView
   v = [[NSScrollView alloc] initWithFrame: NSMakeRect(20, 22, 113, 150)];
   [v setHasVerticalScroller: YES];
@@ -263,10 +262,9 @@ int defaultDateFormatIndex = 3;
   RELEASE(v);
   RELEASE(tv);
 
-/********************/
-/* Second Column... */
-/********************/
-
+  /********************/
+  /* Second Column... */
+  /********************/
 
   // NSImageView
   v = [[NSImageView alloc] initWithFrame: NSMakeRect(153, 98, 96, 72)];

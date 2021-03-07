@@ -18,6 +18,13 @@
 	);
 	Super = NSObject;
     };
+    GormCanvasView = {
+	Actions = (
+	);
+	Outlets = (
+	);
+	Super = NSView;
+    };
     GormDocument = {
 	Actions = (
 	    "createSubclass:",
