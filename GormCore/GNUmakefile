@@ -41,6 +41,7 @@ include ../Version
 GormCore_HEADER_FILES = \
 	GormCore.h \
 	GormBoxEditor.h \
+	GormCanvasView.h \
 	GormClassEditor.h \
 	GormClassInspector.h \
 	GormClassManager.h \
@@ -106,6 +107,7 @@ GormCore_HEADER_FILES = \
 
 GormCore_OBJC_FILES = \
 	GormBoxEditor.m \
+	GormCanvasView.m \
 	GormClassEditor.m \
 	GormClassInspector.m \
 	GormClassManager.m \
