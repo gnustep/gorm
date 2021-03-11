@@ -54,6 +54,7 @@
 #include "GormWrapperLoader.h"
 #include "GormDocumentWindow.h"
 #include "GormDocumentController.h"
+#include "GormCanvasView.h"
 
 @interface GormDisplayCell : NSButtonCell
 @end
