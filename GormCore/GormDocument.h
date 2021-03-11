@@ -34,7 +34,7 @@
 #include <GNUstepGUI/GSNibContainer.h>
 
 @class GormClassManager, GormClassEditor, GormObjectProxy, GormFilesOwner, 
-  GormFilePrefsManager, GormDocumentWindow;
+  GormFilePrefsManager, GormDocumentWindow, GormCanvasView;
 
 /*
  * Trivial classes for connections from objects to their editors, and from
@@ -74,6 +74,8 @@
   id			objectsView;
   id			soundsView;
   id			imagesView;
+  id                    canvasWindow;
+  GormCanvasView        *canvasView;
   BOOL			isActive;
   BOOL                  isDocumentOpen;
   NSMenu		*savedMenu;
