@@ -37,7 +37,9 @@
 	    selectionBox,
 	    filePrefsView,
 	    filePrefsManager,
-	    filePrefsWindow
+	    filePrefsWindow,
+	    canvasWindow,
+	    canvasView
 	);
 	Super = NSDocument;
     };

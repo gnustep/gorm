@@ -63,6 +63,7 @@ FOUNDATION_EXPORT const unsigned char GormCoreVersionString[];
 #include <GormCore/GormNSPanel.h>
 #include <GormCore/GormNSSplitViewInspector.h>
 #include <GormCore/GormNSWindow.h>
+#include <GormCore/GormNSWindowView.h>
 #include <GormCore/GormObjectEditor.h>
 #include <GormCore/GormObjectInspector.h>
 #include <GormCore/GormOpenGLView.h>
