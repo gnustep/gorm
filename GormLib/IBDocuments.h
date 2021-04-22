@@ -115,9 +115,19 @@ IB_EXTERN NSString *IBWillCloseDocumentNotification;
 - (void) detachObject: (id)anObject;
 
 /**
+ * Detaches an object from the receiver, closes editor if asked.  GNUstep extension.
+ */
+- (void) detachObject: (id)anObject closeEditor: (BOOL)close_editor;
+
+/**
  * Detaches an array of objects from the receiver.
  */
 - (void) detachObjects: (NSArray*)anArray;
+
+/**
+ * Detaches an array of objects from the receiver. Closes editor if asked. GNUstep extension.
+ */
+- (void) detachObjects: (id)anObject closeEditors: (BOOL)close_editor;
 
 /**
  * The path of the file which represents the document.
