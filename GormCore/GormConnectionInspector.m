@@ -410,12 +410,16 @@ selectCellWithString: (NSString*)title
 	      [aCell setEnabled: YES];
 
               // Draws dimple for connected outlets
-              for (id conn in connectors) {
-                if ([name isEqualToString: [conn label]]) {
-                  [aCell setIsOutletConnected: YES];
-                  break;
+              NSEnumerator *en = [connectors objectEnumerator];
+              id conn = nil;
+              while ((conn = [en nextObject]) != nil)
+                {
+                  if ([name isEqualToString: [conn label]])
+                    {
+                      [aCell setIsOutletConnected: YES];
+                      break;
+                    }
                 }
-              }
 	    }
 	  else
 	    {

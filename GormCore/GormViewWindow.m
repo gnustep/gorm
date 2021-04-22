@@ -179,7 +179,7 @@
   // id sub = nil;
 
   // activate the parent and all subview editors...
-  [editor activate];
+  [(id<IBEditors>)editor activate];
   /*
   while((sub = [en nextObject]) != nil)
     {

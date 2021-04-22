@@ -826,6 +826,13 @@
   [(GormGenericEditor *)selectionOwner groupSelectionInScrollView];
 }
 
+- (void) groupSelectionInMatrix: (id)sender
+{
+  if ([selectionOwner respondsToSelector: @selector(groupSelectionInMatrix)] == NO)
+    return;
+  [(GormGenericEditor *)selectionOwner groupSelectionInMatrix];
+}
+
 - (void) ungroup: (id)sender
 {
   // NSLog(@"ungroup: selectionOwner %@", selectionOwner);
@@ -1372,14 +1379,19 @@
   return classMenu;
 }
 
-
 - (void) print: (id) sender
 {
   [[self keyWindow] print: sender];
 }
+
+- (void) selectAllItems: (id)sender
+{
+}
+
 @end
 
 @implementation Gorm (GormServer)
+
 // Methods to support external apps adding and deleting
 // classes from the current document...
 - (void) addClass: (NSDictionary *) dict
@@ -1411,4 +1423,5 @@
 
   [cm removeClassNamed: className];
 }
+
 @end

@@ -87,6 +87,7 @@
 - (void) groupSelectionInSplitView;
 - (void) groupSelectionInBox;
 - (void) groupSelectionInView;
+- (void) groupSelectionInMatrix;
 - (void) ungroup;
 - (void) setEditor: (id)anEditor forDocument: (id<IBDocuments>)doc;
 - (id) changeSelection: (id)sender;

@@ -925,7 +925,7 @@ void _attachAll(NSMenu *menu, id document)
       else
 	{
 	  NSMenu	*menu;
-	  id		editor;
+	  id<IBEditors>	editor;
 
 	  /*
 	   * A single item with a submenu is selected -

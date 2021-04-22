@@ -81,7 +81,7 @@
     }
   else if (sender == autorepeatButton)
     {
-      switch ([sender state])
+      switch ([(NSButton *)sender state])
 	{
 	case 0:
 	  [object setAutorepeat: NO];
@@ -93,7 +93,7 @@
     }
   else if (sender == valueWrapsButton)
     {
-      switch ([sender state])
+      switch ([(NSButton *)sender state])
 	{
 	case 0:
 	  [object setValueWraps: NO];

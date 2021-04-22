@@ -67,7 +67,10 @@ const unichar rt[]={NSRightArrowFunctionKey};
 
 - (void) awakeFromNib
 {
-  for (NSCell *cell in [keyType cells])
+  NSArray *cells = [keyType cells];
+  NSEnumerator *en = [cells objectEnumerator];
+  NSCell *cell = nil;
+  while ((cell = [en nextObject]) != nil)
     {
       [cell setRefusesFirstResponder: YES];
     }

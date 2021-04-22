@@ -28,6 +28,11 @@
 #include "NSCell+GormAdditions.h"
 
 @implementation NSCell (GormAdditions)
+
+// This is category-smashing...
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wobjc-protocol-method-implementation"
+
 /*
  *  this methods is directly coming from NSCell.m
  *  The only additions is [textObject setUsesFontPanel: NO]
@@ -57,4 +62,7 @@
 
   return textObject;
 }
+
+#pragma GCC diagnostic pop
+
 @end

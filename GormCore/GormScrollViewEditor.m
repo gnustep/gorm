@@ -89,6 +89,12 @@
     }
 }
 
+- (void) close
+{
+  [self setOpened: NO];
+  [super close];
+}
+
 - (void) mouseDown: (NSEvent *) theEvent
 {
   BOOL onKnob = NO;
@@ -120,10 +126,11 @@
 	}
     }
 
+  // Open the scrollview, if it's not opened...
   if (opened == NO)
     {
       [super mouseDown: theEvent];
-      return;
+      // return;
     }
 
   if ([[_EO hitTest: [theEvent locationInWindow]]
@@ -155,6 +162,8 @@
 	  [v mouseDown: theEvent];	  
 	}
     }
+
+  opened = NO;
 }
 
 - (void) dealloc

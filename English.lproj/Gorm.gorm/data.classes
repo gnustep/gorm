@@ -6,6 +6,7 @@
 	    "arrangeSelectedObjects:",
 	    "exportStrings:",
 	    "groupSelectionInView:",
+	    "groupSelectionInMatrix:",
 	    "orderFrontFontPanel:",
 	    "translate:"
 	);
@@ -45,7 +46,8 @@
 	    "preferencesPanel:",
 	    "guideline:",
 	    "print:",
-	    "groupSelectionInView:"
+	    "groupSelectionInView:",
+	    "groupSelectionInMatrix:"
 	);
 	Outlets = (
 	    gormMenu,

@@ -101,7 +101,7 @@
 - (void) pause: (id)sender
 {
   NSDebugLog(@"Pause");
-  [object pause];
+  [(NSSound *)object pause];
 }
 
 - (void) record: (id)sender

@@ -44,6 +44,9 @@
 
 @implementation NSFontManager (GormExtensions)
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wobjc-protocol-method-implementation"
+
 /**
  * Override for sendAction in NSFontManager.  This method calls the action on the 
  * last edited object if the attempt to send the action to the first responder is
@@ -81,5 +84,7 @@
 
   return result;
 }
+
+#pragma GCC diagnostic pop
 
 @end

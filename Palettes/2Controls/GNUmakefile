@@ -31,6 +31,7 @@ PALETTE_NAME = 2Controls
 	GormButtonAttributesInspector.m \
 	GormBoxAttributesInspector.m \
 	GormCellAttributesInspector.m \
+	GormCellSizeInspector.m \
 	GormColorWellAttributesInspector.m \
 	GormFormAttributesInspector.m \
 	GormPopUpButtonAttributesInspector.m \
@@ -51,6 +52,7 @@ PALETTE_NAME = 2Controls
 	GormNSBoxInspector.gorm \
 	GormNSButtonInspector.gorm \
 	GormNSCellInspector.gorm \
+	GormCellSizeInspector.gorm \
 	GormNSFormInspector.gorm \
 	GormNSMatrixInspector.gorm \
 	GormNSPopUpButtonInspector.gorm \

@@ -101,6 +101,13 @@ NSUInteger colsStepperValue;
   return self;
 }
 
+- (void) _refreshCells
+{
+  id<IBDocuments> document = [(id<IB>)NSApp activeDocument];
+  [document detachObjects: [object cells] closeEditors: NO];
+  [document attachObjects: [object cells] toParent: object]; 
+}
+
 /* Commit changes that the user makes in the Attributes Inspector */
 - (void) ok: (id) sender
 {
@@ -149,19 +156,34 @@ NSUInteger colsStepperValue;
       NSInteger    tag;
       NSString     *title;
       int          c;
-      for (c = 0; c < [object numberOfColumns]; c++)
+
+      if ([object prototype] == nil)
         {
-	  int r;
-          for (r = 0; r < [object numberOfRows]; r++)
+          NSLog(@"prototype is nil, using first cell in matrix");
+          if ([object cells] > 0)
             {
-              cell = [object cellAtRow: r column: c];
-              tag = [cell tag];
-              title = [cell title];
-              cell = [[object prototype] copy];
-              [cell setTag: tag];
-              [cell setTitle: title];
-              [object putCell:cell atRow:r column:c];
-              [cell release];
+              NSCell *acell = [[object cells] objectAtIndex: 0];
+              [object setPrototype: acell];
+              NSLog(@"prototype set %@", acell);
+            }
+        }
+      
+      if ([object prototype] != nil)
+        {
+          for (c = 0; c < [object numberOfColumns]; c++)
+            {
+              int r;
+              for (r = 0; r < [object numberOfRows]; r++)
+                {
+                  cell = [object cellAtRow: r column: c];
+                  tag = [cell tag];
+                  title = [cell title];
+                  cell = [[object prototype] copy];
+                  [cell setTag: tag];
+                  [cell setTitle: title];
+                  [object putCell:cell atRow:r column:c];
+                  [cell release];
+                }
             }
         }
       [object deselectAllCells];
@@ -205,6 +227,7 @@ NSUInteger colsStepperValue;
 	    }
 	}
       [self _displayObject: object resize: YES];
+      [self _refreshCells];
     }
   else if(sender == rowsStepper)
     {
@@ -227,6 +250,7 @@ NSUInteger colsStepperValue;
       [sender setIntValue: num];
       rowsStepperValue = num;
       [self _displayObject: object resize: YES];
+      [self _refreshCells];      
     }
   else if(sender == colsStepper)
     {
@@ -249,6 +273,7 @@ NSUInteger colsStepperValue;
       [sender setIntValue: num];
       colsStepperValue = num;
       [self _displayObject: object resize: YES];
+      [self _refreshCells];      
     }
 
   /*
@@ -263,8 +288,8 @@ NSUInteger colsStepperValue;
     {
       [prototypeMatrix putCell: [object prototype] atRow:0 column:0];
     }
-  
-  [super ok:sender];
+
+   [super ok:sender];
 }
 
 

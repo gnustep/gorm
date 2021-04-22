@@ -7,6 +7,7 @@
 static GormFontViewController *gorm_font_cont = nil;
 
 @implementation GormFontViewController
+
 + (GormFontViewController *) sharedGormFontViewController
 {
   if (gorm_font_cont == nil)
@@ -15,6 +16,7 @@ static GormFontViewController *gorm_font_cont = nil;
     }
   return gorm_font_cont;
 }
+
 - (id) init
 {
   self = [super init];
@@ -31,6 +33,7 @@ static GormFontViewController *gorm_font_cont = nil;
     }
   return self;
 }
+
 - (NSFont *) convertFont: (NSFont *)aFont
 {
   float size;
@@ -87,6 +90,7 @@ static GormFontViewController *gorm_font_cont = nil;
   
   return font;
 } 
+
 - (void) selectFont: (id)sender
 {
   NSFontManager *fontManager = [NSFontManager sharedFontManager];

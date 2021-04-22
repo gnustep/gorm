@@ -501,6 +501,53 @@ NSComparisonResult _sortViews(id view1, id view2, void *context)
   [self selectObjects: [NSArray arrayWithObject: editor]];
 }
 
+- (void) groupSelectionInMatrix
+{
+  GormViewEditor *editor = nil;
+  NSMatrix *matrix = nil;
+  
+  if ([selection count] < 1)
+    {
+      return;
+    }
+
+  // For an NSMatrix there can only be one prototype cell.
+  if ([selection count] == 1)
+    {
+      GormViewEditor *s = [selection objectAtIndex: 0];
+      id editedObject = [s editedObject];
+      NSCell *cell = [editedObject cell];
+      NSRect rect = [editedObject frame];
+      NSView *superview = [s superview];
+
+      // Create the matrix
+      matrix = [[NSMatrix alloc] initWithFrame: rect
+                                          mode: NSRadioModeMatrix
+                                     prototype: cell
+                                  numberOfRows: 1
+                               numberOfColumns: 1];
+      
+      rect = NSUnionRect(rect, [s frame]);
+      [s deactivate];
+      
+      NSLog(@"editedObject = %@,\n\nsuperview = %@,\n\nmatrix = %@",editedObject, superview, matrix);
+      [matrix setPrototype: cell];
+      NSLog(@"cell = %@", cell);
+      NSLog(@"prototype = %@", [matrix prototype]);
+      [editedObject removeFromSuperview];
+      
+      [document attachObject: matrix
+                    toParent: _editedObject];
+      [superview addSubview: matrix];
+    }
+
+  editor = (GormViewEditor *)[document editorForObject: matrix
+                                              inEditor: self
+                                                create: YES];
+  
+  [self selectObjects: [NSArray arrayWithObject: editor]];
+}
+
 - (void) groupSelectionInScrollView
 {
   NSEnumerator *enumerator = nil;

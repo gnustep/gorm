@@ -793,7 +793,7 @@
   [[self window] postEvent: e atStart: NO];
 
   {
-    NSRect	redrawRect;
+    NSRect	redrawRect = NSZeroRect;
 
     /*
      * This was a subview resize, so we must clean up by removing
