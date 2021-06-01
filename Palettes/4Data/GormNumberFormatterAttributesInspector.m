@@ -27,8 +27,7 @@
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
 
-#include <GormCore/GormCore.h>
-
+#include "DataPalette.h"
 #include "GormNumberFormatterAttributesInspector.h"
 
 /* this macro makes sure that the string contains a value, even if @"" */
@@ -99,18 +98,17 @@ extern NSArray *predefinedNumberFormats;
               negativeFmt = [NSNumberFormatter negativeFormatAtIndex:row];
               fullFmt     = [NSNumberFormatter formatAtIndex:row];
           
-          // Update Appearance samples
-          [self updateAppearanceFieldsWithFormat: fullFmt];
-           
-          // Update editable format fields
-          [[formatForm cellAtIndex:0] setStringValue: VSTR(positiveFmt)];
-          [[formatForm cellAtIndex:1] setStringValue: VSTR(zeroFmt)];
-          [[formatForm cellAtIndex:2] setStringValue: VSTR(negativeFmt)];
-
-          [fmtr setFormat:fullFmt];
-
+              // Update Appearance samples
+              [self updateAppearanceFieldsWithFormat: fullFmt];
+              
+              // Update editable format fields
+              [[formatForm cellAtIndex:0] setStringValue: VSTR(positiveFmt)];
+              [[formatForm cellAtIndex:1] setStringValue: VSTR(zeroFmt)];
+              [[formatForm cellAtIndex:2] setStringValue: VSTR(negativeFmt)];
+              
+              [fmtr setFormat:fullFmt];
             }
-         }
+        }
       else if (sender == formatForm)
         {
           NSUInteger idx;
@@ -124,7 +122,7 @@ extern NSArray *predefinedNumberFormats;
           
           fullFmt = [NSString stringWithFormat:@"%@;%@;%@",
                               positiveFmt, zeroFmt, negativeFmt];
-
+          
           // If the 3 formats correspond to a predefined set  then highlight it in
           // number Format table view above
           if ( (idx = [NSNumberFormatter indexOfFormat: fullFmt]) == NSNotFound)

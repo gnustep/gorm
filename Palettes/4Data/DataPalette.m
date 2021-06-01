@@ -26,7 +26,7 @@
 #include <AppKit/AppKit.h>
 
 #include <InterfaceBuilder/InterfaceBuilder.h>
-#include <GormCore/GormCore.h>
+#include "DataPalette.h"
 
 /* -----------------------------------------------------------
  * Some additions to the NSNumberFormatter Class specific to Gorm

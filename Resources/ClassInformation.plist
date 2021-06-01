@@ -184,6 +184,7 @@
     NSBrowserCell = {Super = NSCell; }; 
     NSButton = {Actions = ("performClick:"); Super = NSControl; }; 
     NSButtonCell = {Actions = ("performClick:"); Super = NSActionCell; }; 
+    NSByteCountFormatter = {Super = NSFormatter; };
     NSCStringText = {Actions = ("clear:", "selectText:"); Super = NSText; }; 
     NSCell = {
         Actions = (
@@ -208,7 +209,9 @@
         Super = NSView; 
     }; 
     NSCursor = {Super = NSObject; }; 
-    NSDateFormatter = {Super = NSFormatter; }; 
+    NSDateComponentsFormatter = {Super = NSFormatter; };
+    NSDateFormatter = {Super = NSFormatter; };
+    NSDateIntervalFormatter = {Super = NSFormatter; };    
     NSDictionary = {Super = NSObject; }; 
     NSDocument = {
         Actions = (
@@ -230,7 +233,8 @@
         Actions = ("close:", "open:", "toggle:"); 
         Outlets = (delegate, contentView, parentWindow); 
         Super = NSResponder; 
-    }; 
+    };
+    NSEnergyFormatter = {Super = NSFormatter; };    
     NSFontManager = {
         Actions = (
             "addFontTrait:", 
@@ -248,21 +252,24 @@
     NSHelpManager = {Actions = ("activateContextHelpMode:", "showHelp:"); Super = NSObject; }; 
     NSImage = {Super = NSObject; }; 
     NSImageCell = {Super = NSCell; }; 
-    NSImageView = {Super = NSControl; }; 
+    NSImageView = {Super = NSControl; };
+    NSLengthFormatter = {Super = NSFormatter; };    
     NSMatrix = {
         Actions = ("selectAll:", "selectText:"); 
         Outlets = (delegate); 
         Super = NSControl; 
-    }; 
+    };
+    NSMeasurementFormatter = {Super = NSFormatter; };    
     NSMenu = {Actions = ("submenuAction:"); Super = NSObject; }; 
     NSMenuItem = {Outlets = (target); Super = NSObject; }; 
     NSMenuItemCell = {Super = NSButtonCell; }; 
     NSMutableArray = {Super = NSArray; }; 
     NSMutableDictionary = {Super = NSDictionary; }; 
-    NSNumberFormatter = {Super = NSFormatter; }; 
+    NSNumberFormatter = {Super = NSFormatter; };
     NSOpenGLView = {Super = NSView; }; 
     NSOutlineView = {Super = NSTableView; }; 
-    NSPanel = {Super = NSWindow; }; 
+    NSPanel = {Super = NSWindow; };
+    NSPersonNameComponentsFormatter = {Super = NSFormatter; };    
     NSPopUpButton = {Super = NSButton; }; 
     NSPopUpButtonCell = {Super = NSMenuItemCell; }; 
     NSProgressIndicator = {Actions = ("animate:", "startAnimation:", "stopAnimation:"); Super = NSView; }; 
@@ -403,8 +410,31 @@
     NSGridView = {
         Super = NSView;        
     };
+    NSStackView = {
+        Super = NSView;
+    };
     NSSwitch = {
         Super = NSControl;
+    };
+    NSController = {
+        Actions = ();
+        Outlets = ();
+        Super = NSObject;
+    };
+    NSObjectController = {
+        Actions = ();
+        Outlets = (content);
+        Super = NSController;
+    };
+    NSArrayController = {
+        Actions = ("selectNext:","selectPrevious:","insert:");
+        Outlets = (arrangedObjects);
+        Super = NSObjectController;
+    };
+    NSDictionaryController = {
+        Actions = ();
+        Outlets = ();
+        Super = NSArrayController;
     };
     NSObject = {}; 
     Object = {}; 

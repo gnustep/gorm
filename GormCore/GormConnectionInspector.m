@@ -190,13 +190,13 @@
     }
 }
 
-- (void) _internalCall: (NSBrowser*)sender
+- (void) _internalCall: (NSBrowser *)sender
 {
-  unsigned	numConnectors = [connectors count];
-  unsigned	index;
+  unsigned	 numConnectors = [connectors count];
+  unsigned	 index = 0;
   NSBrowserCell	*cell = [sender selectedCell];
   NSString	*title = [cell stringValue];
-  NSInteger		col = [sender selectedColumn];
+  NSInteger	 col = [sender selectedColumn];
 
   if (sender == newBrowser)
     {

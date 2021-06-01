@@ -57,7 +57,7 @@
 }
 @end
 
-@interface GormDocument : NSDocument <IBDocuments, GSNibContainer, NSCoding>
+@interface GormDocument : NSDocument <IBDocuments, GSNibContainer, NSCoding> 
 {
   GormClassManager      *classManager;
   GormFilesOwner	*filesOwner;
@@ -282,6 +282,16 @@
  * Returns the services menu for the document.
  */
 - (NSMenu *) servicesMenu;
+
+/**
+ * Set the font menu.
+ */
+- (void) setFontMenu: (NSMenu *)menu;
+
+/**
+ * Returns the font menu for the document.
+ */
+- (NSMenu *) fontMenu;
 
 /**
  * Sets the windows menu.

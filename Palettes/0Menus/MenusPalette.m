@@ -78,7 +78,8 @@
   NSBundle	*bundle = [NSBundle bundleForClass: [self class]];
   NSString	*path = [bundle pathForImageResource: @"GormMenuDrag"];
   NSImage	*dragImage = [[NSImage alloc] initWithContentsOfFile: path];
-
+  NSFontManager *fm = nil;
+  
   originalWindow = [[NSWindow alloc] initWithContentRect: 
 				       NSMakeRect(0, 0, 272, 192)
 				       styleMask: NSBorderlessWindowMask 
@@ -124,7 +125,9 @@
   /*
    * The Font menu
    */
-  m = [GormNSMenu menuWithMenu: [[NSFontManager sharedFontManager] fontMenu: YES]];
+  fm = [NSFontManager sharedFontManager];
+  m = [GormNSMenu menuWithMenu: [fm fontMenu: YES]];
+  
   // Other font menu items
   [m addItemWithTitle: @"Underline" 
      action: @selector(underline:)
@@ -359,7 +362,7 @@
 		       action: NULL
 		       keyEquivalent: @""];
 
-  s = [GormNSMenu menuWithMenu: [[NSFontManager sharedFontManager] fontMenu: YES]];
+  s = [GormNSMenu menuWithMenu: [fm fontMenu: YES]];
 
   // Other font menu items
   [s addItemWithTitle: @"Underline" 

@@ -59,14 +59,14 @@ static GormWrapperLoaderFactory *_sharedWrapperLoaderFactory = nil;
     {
       NSMutableArray *images = [NSMutableArray array];
       NSMutableArray *sounds = [NSMutableArray array];
+      NSArray *imageFileTypes = [NSImage imageFileTypes];
+      NSArray *soundFileTypes = [NSSound soundUnfilteredFileTypes];
 
       document = doc; // don't retain...
       if ([wrapper isDirectory])
 	{
 	  NSDictionary *fileWrappers = nil;
 	  NSString *key = nil;
-	  NSArray *imageFileTypes = [NSImage imageFileTypes];
-	  NSArray *soundFileTypes = [NSSound soundUnfilteredFileTypes];
 	  NSEnumerator *enumerator = nil;
 	  
 	  key = nil;
@@ -106,6 +106,14 @@ static GormWrapperLoaderFactory *_sharedWrapperLoaderFactory = nil;
 		}
 	    }
 	}
+      else if ([wrapper isRegularFile]) // handle wrappers which are just plain files...
+        {
+          
+        }
+      else
+        {
+          NSLog(@"Unsupported wrapper type");
+        }
 
       // fill in the images and sounds arrays...
       [document setSounds: sounds];

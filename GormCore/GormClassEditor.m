@@ -900,7 +900,6 @@ NSImage *browserImage = nil;
 	}
       
       // add it to the top level objects...
-      [document setName: nil forObject: instance];
       [document attachObject: instance toParent: nil];
       
       // we want to record if it's custom or not and act appropriately...
@@ -917,7 +916,6 @@ NSImage *browserImage = nil;
   else
     {
       item = [[GormObjectProxy alloc] initWithClassName: object];
-      [document setName: nil forObject: item];
       [document attachObject: item toParent: nil];      
       [document changeToViewWithTag: 0];
     }
@@ -1024,8 +1022,8 @@ NSImage *browserImage = nil;
 	  headerName = [sp filename];
 	  NSDebugLog(@"Saving %@", className);
 	  if (![classManager makeSourceAndHeaderFilesForClass: className
-			     withName: sourceName
-			     and: headerName])
+                                                     withName: sourceName
+                                                          and: headerName])
 	    {
 	      NSRunAlertPanel(_(@"Alert"), 
 			      _(@"Could not create the class's file"),
@@ -1193,7 +1191,7 @@ objectValueForTableColumn: (NSTableColumn *)aTableColumn
 }
 
 - (NSInteger) outlineView: (NSOutlineView *)anOutlineView 
-numberOfChildrenOfItem: (id)item
+   numberOfChildrenOfItem: (id)item
 {
   NSArray *subclasses = [classManager subClassesOf: item];
   return [subclasses count];
@@ -1335,7 +1333,7 @@ shouldEditTableColumn: (NSTableColumn *)tableColumn
 
 @implementation GormClassEditor (NSBrowserDelegate)
 
-- (void)browser:(NSBrowser *)sender createRowsForColumn:(NSInteger)column inMatrix:(NSMatrix *)matrix
+- (void) browser:(NSBrowser *)sender createRowsForColumn: (NSInteger)column inMatrix: (NSMatrix *)matrix
 {
   NSArray      *classes = nil;
   NSEnumerator *en = nil;

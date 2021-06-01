@@ -45,6 +45,7 @@ extern NSString *GormDidModifyClassNotification;
 extern NSString *GormDidAddClassNotification;
 extern NSString *GormDidDeleteClassNotification;
 extern NSString *GormWillDetachObjectFromDocumentNotification;
+extern NSString *GormDidDetachObjectFromDocumentNotification;
 extern NSString *GormResizeCellNotification;
 
 @class	GormDocument;
@@ -88,37 +89,6 @@ extern NSString *GormResizeCellNotification;
 - (NSString*) inspectorClassName;
 - (NSString*) connectInspectorClassName;
 - (NSString*) sizeInspectorClassName;
-@end
-
-/*
- * NSDateFormatter and NSNumberFormatter extensions
- * for Gorm Formatters used in the Data Palette
- */
-
-@interface NSDateFormatter (GormAdditions)
-
-+ (int) formatCount;
-+ (NSString *) formatAtIndex: (int)index;
-+ (NSInteger) indexOfFormat: (NSString *) format;
-+ (NSString *) defaultFormat;
-+ (id) defaultFormatValue;
-
-@end
-
-@interface NSNumberFormatter (GormAdditions)
-
-+ (int) formatCount;
-+ (NSString *) formatAtIndex: (int)index;
-+ (NSString *) positiveFormatAtIndex: (int)index;
-+ (NSString *) zeroFormatAtIndex: (int)index;
-+ (NSString *) negativeFormatAtIndex: (int)index;
-+ (NSDecimalNumber *) positiveValueAtIndex: (int)index;
-+ (NSDecimalNumber *) negativeValueAtIndex: (int)index;
-+ (NSInteger) indexOfFormat: (NSString *)format;
-+ (NSString *) defaultFormat;
-+ (id) defaultFormatValue;
-- (NSString *) zeroFormat;
-
 @end
 
 @interface NSObject (GormAdditions)

@@ -28,7 +28,7 @@
 #include <AppKit/AppKit.h>
 
 #include <InterfaceBuilder/InterfaceBuilder.h>
-#include <GormCore/GormCore.h>
+#include "DataPalette.h"
 
 #include "GormDateFormatterAttributesInspector.h"
 

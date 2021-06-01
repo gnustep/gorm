@@ -38,12 +38,13 @@ NSString *GormDidModifyClassNotification = @"GormDidModifyClassNotification";
 NSString *GormDidAddClassNotification = @"GormDidAddClassNotification";
 NSString *GormDidDeleteClassNotification = @"GormDidDeleteClassNotification";
 NSString *GormWillDetachObjectFromDocumentNotification = @"GormWillDetachObjectFromDocumentNotification";
+NSString *GormDidDetachObjectFromDocumentNotification = @"GormDidDetachObjectFromDocumentNotification";
 NSString *GormResizeCellNotification = @"GormResizeCellNotification";
 
 // Private, and soon to be deprecated, notification string...
 NSString *GSInternalNibItemAddedNotification = @"_GSInternalNibItemAddedNotification";
 
-// Define this as "NO" initially.   We only want to turn this on while loading or testing.
+// Define this as "NO" initially.  We only want to turn this on while loading or testing.
 static BOOL _isInInterfaceBuilder = NO;
 
 @class	InfoPanel;
@@ -220,6 +221,11 @@ static BOOL _isInInterfaceBuilder = NO;
   return image;
 }
 
+- (NSString *) description
+{
+  NSString *desc = [super description];
+  return [NSString stringWithFormat: @"<%@, className = %@>", desc, theClass];
+}
 @end
 
 // define the class proxy...

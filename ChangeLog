@@ -1,3 +1,54 @@
+2021-06-01 Gregory John Casamento <greg.casamento@gmail.com>
+
+	* GormCore/GormPrivate.h: Remove references.
+	* Palettes/4Data/DataPalette.h
+	* Palettes/4Data/DataPalette.m: Include DataPalette.h
+	* Palettes/4Data/GormDateFormatterAttributesInspector.m
+	* Palettes/4Data/GormNumberFormatterAttributesInspector.m: Include
+        DataPalette.h
+	* Palettes/5Formatters/GNUmakefile
+	* Palettes/5Formatters/GNUmakefile.preamble
+	* Palettes/5Formatters/palette.table: New palette
+	* Resources/ClassInformation.plist: Add new classes
+
+2021-05-15 Gregory John Casamento <greg.casamento@gmail.com>
+
+	* English.lproj/Gorm.rtfd/TXT.rtf: Add help file
+	* GNUmakefile: Copy help file.
+	* GormCore/GormClassEditor.m
+	* GormCore/GormClassManager.m
+	* GormCore/GormConnectionInspector.m: Code cleanup.
+	* GormCore/GormDocument.h: Declaration of setFontMenu:/fontMenu
+	* GormCore/GormDocument.m: Add setFontMenu:/fontMenu methods.
+        Add outlet connector so that font menu us connected to the font
+        manager when the model is loaded.
+	* GormInfo.plist: Update version
+	* Palettes/0Menus/MenusPalette.m: Use auto variable to hold
+        the NSFontManager singleton.
+
+2021-05-09 Gregory John Casamento <greg.casamento@gmail.com>
+
+	* GormCore/GormClassManager.m: Code cleanup
+	* GormCore/GormDocument.m: Code cleanup
+	* GormCore/GormPrivate.m: Code cleanup
+	* GormCore/GormWrapperLoader.m: Code cleanup.
+	* GormLib/IBDocuments.h: Add some GS specific methods to the
+        protocol.
+	* Gorm.m: Remove unneeded ivar.
+	* Plugins/Nib/GormNibWrapperLoader.m: Code cleanup.
+	* Plugins/Xib/GormXibWrapperLoader.m: Add code to handle connections.
+	* Resources/ClassInformation.plist: Add missing classes to
+        this plist.
+
+2021-05-09 Gregory John Casamento <greg.casamento@gmail.com>
+
+	* ANNOUNCE
+	* Documentation/news.texi
+	* GormCore/GormFilePrefsManager.m
+	* GormInfo.plist
+	* NEWS
+	* Version: Release 1.2.28
+
 2021-04-22 Gregory John Casamento <greg.casamento@gmail.com>
 
 	* GormCore/GormScrollViewEditor.m

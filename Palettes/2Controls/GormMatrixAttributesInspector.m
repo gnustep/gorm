@@ -101,11 +101,45 @@ NSUInteger colsStepperValue;
   return self;
 }
 
-- (void) _refreshCells
+- (void) _refreshCellsComparingWithOldCells: (NSArray *)oldCells
 {
   id<IBDocuments> document = [(id<IB>)NSApp activeDocument];
-  [document detachObjects: [object cells] closeEditors: NO];
-  [document attachObjects: [object cells] toParent: object]; 
+  NSArray *newCells = [[self object] cells];
+  NSUInteger newCount = [newCells count];
+  NSUInteger oldCount = [oldCells count];
+  NSMutableArray *cellsAdded = [NSMutableArray arrayWithCapacity: newCount];
+  NSMutableArray *cellsRemoved = [NSMutableArray arrayWithCapacity: newCount];
+  NSEnumerator *en = nil;
+  NSCell *c = nil;
+
+  if (newCount > oldCount)
+    {
+      en = [newCells objectEnumerator];
+      while ((c = [en nextObject]) != nil)
+        {
+          if ([oldCells containsObject: c] == NO)
+            {
+              [cellsAdded addObject: c]; // object is new
+            }
+        }
+      [document attachObjects: cellsAdded toParent: [self object]];
+    }
+  else if (oldCount > newCount)
+    {
+      en = [oldCells objectEnumerator];
+      while ((c = [en nextObject]) != nil)
+        {
+          if ([newCells containsObject: c] == NO)
+            {
+              [cellsRemoved addObject: c]; // object is new
+            }
+        }
+      [document detachObjects: cellsRemoved closeEditors: NO];
+    }
+  else
+    {
+      NSLog(@"No change");
+    }
 }
 
 /* Commit changes that the user makes in the Attributes Inspector */
@@ -201,7 +235,8 @@ NSUInteger colsStepperValue;
     {
       int rows = [[rowsForm cellAtIndex: 0] intValue];
       int cols = [[colsForm cellAtIndex: 0] intValue];
-      int num;
+      int num = 0;
+      NSArray *oldCells = [NSArray arrayWithArray: [[self object] cells]];
 
       while((num = [object numberOfRows]) != rows)
 	{
@@ -227,12 +262,13 @@ NSUInteger colsStepperValue;
 	    }
 	}
       [self _displayObject: object resize: YES];
-      [self _refreshCells];
+      [self _refreshCellsComparingWithOldCells: oldCells];
     }
   else if(sender == rowsStepper)
     {
       int delta = [sender intValue] - rowsStepperValue;
       int num = [object numberOfRows];
+      NSArray *oldCells = [NSArray arrayWithArray: [[self object] cells]];
 
       while(delta > 0)
 	{
@@ -250,12 +286,13 @@ NSUInteger colsStepperValue;
       [sender setIntValue: num];
       rowsStepperValue = num;
       [self _displayObject: object resize: YES];
-      [self _refreshCells];      
+      [self _refreshCellsComparingWithOldCells: oldCells];
     }
   else if(sender == colsStepper)
     {
       int delta = [sender intValue] - colsStepperValue;
       int num = [object numberOfColumns];
+      NSArray *oldCells = [NSArray arrayWithArray: [[self object] cells]];
 
       while(delta > 0)
 	{
@@ -273,7 +310,7 @@ NSUInteger colsStepperValue;
       [sender setIntValue: num];
       colsStepperValue = num;
       [self _displayObject: object resize: YES];
-      [self _refreshCells];      
+      [self _refreshCellsComparingWithOldCells: oldCells];
     }
 
   /*

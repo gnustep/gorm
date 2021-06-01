@@ -210,13 +210,15 @@
 			{
 			  NSString *className = [o className];
 			  BOOL isDeferred = [o isDeferred];
-			  BOOL isVisible = [[container visibleWindows] containsObject: o];
+			  BOOL isVisible = [[container visibleWindows]
+                                             containsObject: o];
 			  
 			  // make the object deferred/visible...
 			  obj = [o nibInstantiate];
 			  
 			  [document setObject: obj isDeferred: isDeferred];
 			  [document setObject: obj isVisibleAtLaunch: isVisible];
+                          
 			  // record the custom class...
 			  if([classManager isCustomClass: className])
 			    {
@@ -226,13 +228,15 @@
 		      
 		      if([self isTopLevelObject: obj])
 			{		  
-			  [document attachObject: obj toParent: nil];
+			  [document attachObject: obj
+                                        toParent: nil];
 			}
 		      
 		      if(customClassName != nil)
 			{
 			  objName = [document nameForObject: obj];
-			  [classManager setCustomClass: customClassName forName: objName];
+			  [classManager setCustomClass: customClassName
+                                               forName: objName];
 			}
 		    }
 		  

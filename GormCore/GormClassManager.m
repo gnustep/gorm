@@ -1798,17 +1798,17 @@
   // header file comments...
   [headerFile appendString: @"/* All rights reserved */\n\n"];
   [sourceFile appendString: @"/* All rights reserved */\n\n"];
-  [headerFile appendString: @"#include <AppKit/AppKit.h>\n\n"];
-  [sourceFile appendString: @"#include <AppKit/AppKit.h>\n"];
+  [headerFile appendString: @"#import <AppKit/AppKit.h>\n\n"];
+  [sourceFile appendString: @"#import <AppKit/AppKit.h>\n"];
   if ([[headerPath stringByDeletingLastPathComponent]
     isEqualToString: [sourcePath stringByDeletingLastPathComponent]])
     {
-      [sourceFile appendFormat: @"#include \"%@\"\n\n", 
+      [sourceFile appendFormat: @"#import \"%@\"\n\n", 
 	[headerPath lastPathComponent]];
     }
   else
     {
-      [sourceFile appendFormat: @"#include \"%@\"\n\n", 
+      [sourceFile appendFormat: @"#import \"%@\"\n\n", 
 	headerPath];      
     }
   [headerFile appendFormat: @"@interface %@ : %@\n{\n", className,
@@ -1818,7 +1818,7 @@
   n = [outlets count]; 
   for (i = 0; i < n; i++)
     {
-      [headerFile appendFormat: @"  id %@;\n", [outlets objectAtIndex: i]];
+      [headerFile appendFormat: @"  IBOutlet id %@;\n", [outlets objectAtIndex: i]];
     }
   [headerFile appendFormat: @"}\n"];
 
@@ -1826,17 +1826,16 @@
   for (i = 0; i < n; i++)
     {
       actionName = [actions objectAtIndex: i];
-      [headerFile appendFormat: @"- (void) %@ (id)sender;\n", actionName];
+      [headerFile appendFormat: @"- (IBAction) %@ (id)sender;\n", actionName];
       [sourceFile appendFormat:
 	@"\n"
-	@"- (void) %@ (id)sender\n"
+	@"- (IBAction) %@ (id)sender\n"
 	@"{\n"
-	@"  /* insert your code here */\n"
 	@"}\n"
 	@"\n"
 	, [actions objectAtIndex: i]];
     }
-  [headerFile appendFormat: @"@end\n"];
+  [headerFile appendFormat: @"\n@end\n"];
   [sourceFile appendFormat: @"@end\n"];
 
   headerData = [headerFile dataUsingEncoding:

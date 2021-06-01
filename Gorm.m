@@ -54,7 +54,6 @@
   NSImage               *testingImage;
   id			connectSource;
   id			connectDestination;
-  NSPoint               cascadePoint;
   NSMutableArray        *testingWindows;
   NSSet                 *topObjects;
 }
@@ -1036,8 +1035,6 @@
 {
   // set the menu...
   mainMenu = (NSMenu *)gormMenu;
-  //for cascadePoint
-  cascadePoint = NSZeroPoint;
 }
 
 

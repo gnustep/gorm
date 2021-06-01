@@ -180,7 +180,8 @@ Gorm_LOCALIZED_RESOURCE_FILES = \
 	GormSetName.gorm \
 	GormShelfPref.gorm \
 	GormSoundInspector.gorm \
-	GormViewSizeInspector.gorm
+	GormViewSizeInspector.gorm \
+	Gorm.rtfd
 
 Gorm_LANGUAGES = \
 	English

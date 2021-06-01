@@ -4,6 +4,20 @@
 @include version.texi
 @end ifset
 
+@section Noteworthy changes in version @samp{1.2.28}
+
+@itemize @bullet
+@item Improved NSScrollView handling.
+@item Added NSMatrix to Group menu to make it easier to create NSMatrix objects
+@item Improved inspector for NSMatrix.  Added ability to add rows/columns
+@item Fixed NSMatrix selection problems when grouped in an NSScrollView
+@item Fixes and other improvements to inspectors.  Corrected issue where Gorm's menu stays present during testing mode.
+@end itemize
+
+@c ====================================================================
+@c Keep the next line just below the list of changes in most recent version.
+@ifclear ANNOUNCE-ONLY
+
 @section Noteworthy changes in version @samp{1.2.26}
 
 @itemize @bullet
@@ -13,8 +27,6 @@
 @item Autosizing of views corrected in many inspectors
 @item Improvements in error handling.
 @end itemize
-
-@ifclear ANNOUNCE-ONLY
 
 @section Noteworthy changes in version @samp{1.2.24}
 
@@ -36,9 +48,6 @@
 @item Memory leak fixes.
 @item Objective-C parser improvements.
 @end itemize
-
-@c ====================================================================
-@c Keep the next line just below the list of changes in most recent version.
 
 @section Noteworthy changes in version @samp{1.2.20}
 

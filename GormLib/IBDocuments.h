@@ -48,6 +48,12 @@ IB_EXTERN NSString *IBWillCloseDocumentNotification;
 - (NSArray*) allConnectors;
 
 /**
+ * Attach object to document with a specified name.  Pass nil to
+ * aName to have Gorm assign a name to it.  (GS extension)
+ */ 
+- (void) attachObject: (id)anObject toParent: (id)aParent withName: (NSString *)aName;
+
+/**
  * Attaches an object to the document and makes the association
  * with the parent.
  */
