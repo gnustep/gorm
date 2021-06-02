@@ -32,6 +32,8 @@ PALETTE_NAME = 5Formatters
 	FormattersPalette.m
 
 5Formatters_RESOURCE_FILES = FormattersPalette.tiff \
+	bytecount_formatter.tiff \
+	date_comp_formatter.tiff \
 	palette.table
 
 5Formatters_STANDARD_INSTALL = no
