@@ -65,11 +65,14 @@ int defaultNumberFormatIndex = 0;
 - (void) finishInstantiate
 { 
   NSView	*contents;
-  NSTextView	*tv;
   id		v;
-  NSNumberFormatter *nf;
-  NSDateFormatter *df;
-  NSRect rect;
+  NSByteCountFormatter *bcf;
+  NSDateComponentsFormatter *dcf;
+  NSDateIntervalFormatter *dif;
+  NSEnergyFormatter *ef;
+  NSLengthFormatter *lf;
+  NSMeasurementFormatter *mf;
+  NSPersonNameComponentsFormatter *pncf;
 
   originalWindow = [[NSWindow alloc] initWithContentRect: 
 				       NSMakeRect(0, 0, 272, 192)
@@ -90,7 +93,7 @@ int defaultNumberFormatIndex = 0;
   [v setImage: [NSImage imageNamed: @"number_formatter.tiff"]];
   [contents addSubview: v];
 
-  nf = [[NSNumberFormatter alloc] init];
+  bcf = [[NSByteCountFormatter alloc] init];
   [nf setFormat: [NSNumberFormatter defaultFormat]];
   [self associateObject: nf type: IBFormatterPboardType with: v];
   RELEASE(v);
@@ -100,6 +103,7 @@ int defaultNumberFormatIndex = 0;
   [v setImageScaling: NSScaleProportionally];
   [v setImageAlignment: NSImageAlignCenter];
   [v setImage: [NSImage imageNamed: @"date_formatter.tiff"]];
+  [v setToolTip: @"Formatter"];
   [contents addSubview: v];
 
   df = [[NSDateFormatter alloc]
