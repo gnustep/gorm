@@ -17,5 +17,5 @@ ADDITIONAL_LIB_DIRS += \
         -L../../GormPrefs/$(GNUSTEP_OBJ_DIR) \
         -L../../GormCore/$(GNUSTEP_OBJ_DIR)
 
-5Formatters_LIBRARIES_DEPEND_UPON += -lGorm -lGormCore
+4Data_LIBRARIES_DEPEND_UPON += -lGorm -lGormCore
 endif

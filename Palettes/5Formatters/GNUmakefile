@@ -2,6 +2,9 @@
 #
 #   Copyright (C) 1999 Free Software Foundation, Inc.
 #
+#   Author:  Laurent Julliard <laurent@julliard-online.org>
+#   Date: Nov 2001
+#   
 #   This file is part of GNUstep.
 #   
 #   This program is free software; you can redistribute it and/or modify
@@ -22,14 +25,13 @@ PACKAGE_NAME = gorm
 include $(GNUSTEP_MAKEFILES)/common.make
 
 PALETTE_NAME = 5Formatters
-5Formatters_PALETTE_ICON = FormatterPalette.tiff
-5Formatters_PRINCIPAL_CLASS = FormatterPalette
+5Formatters_PALETTE_ICON = FormattersPalette
+5Formatters_PRINCIPAL_CLASS = FormattersPalette
 
 5Formatters_OBJC_FILES = \
-	FormatterPalette.m 
+	FormattersPalette.m
 
-5Formatters_RESOURCE_FILES = \
-	FormatterPalette.tiff
+5Formatters_RESOURCE_FILES = FormattersPalette.tiff \
 	palette.table
 
 5Formatters_STANDARD_INSTALL = no

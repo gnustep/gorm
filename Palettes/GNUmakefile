@@ -32,7 +32,8 @@ SUBPROJECTS = \
 	1Windows \
 	2Controls \
 	3Containers \
-	4Data 
+	4Data \
+	5Formatters
 
 -include GNUmakefile.preamble
 
@@ -41,4 +42,3 @@ SUBPROJECTS = \
 include $(GNUSTEP_MAKEFILES)/aggregate.make
 
 -include GNUmakefile.postamble
-
