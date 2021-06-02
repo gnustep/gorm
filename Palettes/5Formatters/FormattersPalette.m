@@ -22,11 +22,12 @@
    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02111 USA.
 */
 
-#include <Foundation/Foundation.h>
-#include <AppKit/AppKit.h>
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
+#import <Foundation/NSByteCountFormatter.h>
 
-#include <InterfaceBuilder/InterfaceBuilder.h>
-#include "FormattersPalette.h"
+#import <InterfaceBuilder/InterfaceBuilder.h>
+#import "FormattersPalette.h"
 
 /* -----------------------------------------------------------
  * Some additions to the Formatters Classes specific to Gorm
@@ -62,17 +63,31 @@ int defaultNumberFormatIndex = 0;
   [super dealloc];
 }
 
+- (void) placeFormatter: (NSFormatter *)fm
+         withImageNamed: (NSString *)imageName
+                 atRect: (NSRect)frame
+                 inView: (NSView *)contents
+                toolTip: (NSString *)tooltip
+{
+  id		v;
+  NSImage       *img;
+
+  img = [NSImage imageNamed: imageName];
+  NSLog(@"img = %@", img);
+  v = [[NSImageView alloc] initWithFrame: frame]; 
+  [v setImageFrameStyle: NSImageFramePhoto];
+  [v setImageScaling: NSScaleProportionally];
+  [v setImageAlignment: NSImageAlignCenter];
+  [v setImage: img];
+  [v setToolTip: tooltip];
+  [contents addSubview: v];
+  [self associateObject: fm type: IBFormatterPboardType with: v];
+  RELEASE(v);
+}
+
 - (void) finishInstantiate
 { 
   NSView	*contents;
-  id		v;
-  NSByteCountFormatter *bcf;
-  NSDateComponentsFormatter *dcf;
-  NSDateIntervalFormatter *dif;
-  NSEnergyFormatter *ef;
-  NSLengthFormatter *lf;
-  NSMeasurementFormatter *mf;
-  NSPersonNameComponentsFormatter *pncf;
 
   originalWindow = [[NSWindow alloc] initWithContentRect: 
 				       NSMakeRect(0, 0, 272, 192)
@@ -81,37 +96,43 @@ int defaultNumberFormatIndex = 0;
 					   defer: NO];
   [originalWindow setTitle: @"Formatters"];
   contents = [originalWindow contentView];
+  
+  /* Formatters. */
+  [self placeFormatter: [[NSByteCountFormatter alloc] init]
+        withImageNamed: @"bytecount_formatter"
+                atRect: NSMakeRect(192, 48, 43, 43)
+                inView: contents
+               toolTip: @"Byte Count"];
+  
+  [self placeFormatter: [[NSDateComponentsFormatter alloc] init]
+        withImageNamed: @"date_comp_formatter"
+                atRect: NSMakeRect(144, 48, 43, 43)
+                inView: contents
+               toolTip: @"Date Components"];
 
-  /* Number and Date formatters. Note that they have a specific drag type.
-     * All other palette objects are views and use the default  IBViewPboardType
-     * drag type
-     */
-  v = [[NSImageView alloc] initWithFrame: NSMakeRect(153, 48, 43, 43)];
-  [v setImageFrameStyle: NSImageFramePhoto];
-  [v setImageScaling: NSScaleProportionally];
-  [v setImageAlignment: NSImageAlignCenter];
-  [v setImage: [NSImage imageNamed: @"number_formatter.tiff"]];
-  [contents addSubview: v];
+  [self placeFormatter: [[NSDateIntervalFormatter alloc] init]
+        withImageNamed: @"date_comp_formatter"
+                atRect: NSMakeRect(96, 48, 43, 43)
+                inView: contents
+               toolTip: @"Date Interval"];
 
-  bcf = [[NSByteCountFormatter alloc] init];
-  [nf setFormat: [NSNumberFormatter defaultFormat]];
-  [self associateObject: nf type: IBFormatterPboardType with: v];
-  RELEASE(v);
+  [self placeFormatter: [[NSPersonNameComponentsFormatter alloc] init]
+        withImageNamed: @"date_comp_formatter"
+                atRect: NSMakeRect(48, 48, 43, 43)
+                inView: contents
+               toolTip: @"Energy"];
 
-  v = [[NSImageView alloc] initWithFrame: NSMakeRect(206, 48, 43, 43)];
-  [v setImageFrameStyle: NSImageFramePhoto];
-  [v setImageScaling: NSScaleProportionally];
-  [v setImageAlignment: NSImageAlignCenter];
-  [v setImage: [NSImage imageNamed: @"date_formatter.tiff"]];
-  [v setToolTip: @"Formatter"];
-  [contents addSubview: v];
+  [self placeFormatter: [[NSMeasurementFormatter alloc] init]
+        withImageNamed: @"date_comp_formatter"
+                atRect: NSMakeRect(0, 48, 43, 43)
+                inView: contents
+               toolTip: @"Measurement"];
 
-  df = [[NSDateFormatter alloc]
-           initWithDateFormat: [NSDateFormatter defaultFormat]
-         allowNaturalLanguage: NO];
-
-  [self associateObject: df type: IBFormatterPboardType with: v];
-  RELEASE(v);
+  [self placeFormatter: [[NSLengthFormatter alloc] init]
+        withImageNamed: @"date_comp_formatter"
+                atRect: NSMakeRect(0, 96, 43, 43)
+                inView: contents
+               toolTip: @"Length"];
 }
 
 - (void) willInspectObject: (NSNotification *)notification
