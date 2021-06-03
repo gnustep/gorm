@@ -71,9 +71,10 @@ int defaultNumberFormatIndex = 0;
 {
   id		v;
   NSImage       *img;
-
-  img = [NSImage imageNamed: imageName];
-  NSLog(@"img = %@", img);
+  NSString      *path = [[NSBundle bundleForClass: [self class]]
+                          pathForImageResource: imageName];
+  
+  img = [[NSImage alloc] initWithContentsOfFile: path];
   v = [[NSImageView alloc] initWithFrame: frame]; 
   [v setImageFrameStyle: NSImageFramePhoto];
   [v setImageScaling: NSScaleProportionally];
@@ -83,6 +84,7 @@ int defaultNumberFormatIndex = 0;
   [contents addSubview: v];
   [self associateObject: fm type: IBFormatterPboardType with: v];
   RELEASE(v);
+  RELEASE(img);
 }
 
 - (void) finishInstantiate
