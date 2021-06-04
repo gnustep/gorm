@@ -35,6 +35,7 @@ PALETTE_NAME = 5Formatters
 	bytecount_formatter.tiff \
 	date_comp_formatter.tiff \
 	energy_formatter.tiff \
+	measurement_formatter.tiff \
 	palette.table
 
 5Formatters_STANDARD_INSTALL = no

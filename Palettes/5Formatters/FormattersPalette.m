@@ -125,7 +125,7 @@ int defaultNumberFormatIndex = 0;
                toolTip: @"Energy"];
 
   [self placeFormatter: [[NSMeasurementFormatter alloc] init]
-        withImageNamed: @"date_comp_formatter"
+        withImageNamed: @"measurement_formatter"
                 atRect: NSMakeRect(0, 48, 43, 43)
                 inView: contents
                toolTip: @"Measurement"];
