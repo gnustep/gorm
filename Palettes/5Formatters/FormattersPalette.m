@@ -119,7 +119,7 @@ int defaultNumberFormatIndex = 0;
                toolTip: @"Date Interval"];
 
   [self placeFormatter: [[NSPersonNameComponentsFormatter alloc] init]
-        withImageNamed: @"date_comp_formatter"
+        withImageNamed: @"energy_formatter"
                 atRect: NSMakeRect(48, 48, 43, 43)
                 inView: contents
                toolTip: @"Energy"];
