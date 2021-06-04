@@ -1,9 +1,9 @@
-/* main.m
+/* FormattersPalette.m
 
-   Copyright (C) 1999 Free Software Foundation, Inc.
+   Copyright (C) 2021 Free Software Foundation, Inc.
 
-   Author:  Laurent Julliard <laurent@julliard-online.org>
-   Date: Nov 2001
+   Author: Gregory Casamento <greg.casamento@gmail.com>
+   Date: Jun 4 2021
    
    This file is part of GNUstep.
    
@@ -113,7 +113,7 @@ int defaultNumberFormatIndex = 0;
                toolTip: @"Date Components"];
 
   [self placeFormatter: [[NSDateIntervalFormatter alloc] init]
-        withImageNamed: @"date_comp_formatter"
+        withImageNamed: @"date_interval_formatter"
                 atRect: NSMakeRect(96, 48, 43, 43)
                 inView: contents
                toolTip: @"Date Interval"];
