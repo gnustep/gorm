@@ -80,6 +80,7 @@ Gorm_RESOURCE_FILES = \
 	Palettes/3Containers/3Containers.palette \
 	Palettes/4Data/4Data.palette \
 	Palettes/5Formatters/5Formatters.palette \
+	Palettes/6GridStack/6GridStack.palette \
 	Plugins/Gorm/Gorm.plugin \
 	Plugins/Nib/Nib.plugin \
 	Plugins/GModel/GModel.plugin \

@@ -22,8 +22,8 @@
    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02111 USA.
 */
 
-#ifndef INCLUDED_DataPalette_h
-#define INCLUDED_DataPalette_h
+#ifndef INCLUDED_FormattersPalette_h
+#define INCLUDED_FormattersPalette_h
 
 #include <Foundation/Foundation.h>
 #include <InterfaceBuilder/InterfaceBuilder.h>
