@@ -131,7 +131,7 @@ int defaultNumberFormatIndex = 0;
                toolTip: @"Measurement"];
 
   [self placeFormatter: [[NSLengthFormatter alloc] init]
-        withImageNamed: @"date_comp_formatter"
+        withImageNamed: @"length_formatter"
                 atRect: NSMakeRect(0, 96, 43, 43)
                 inView: contents
                toolTip: @"Length"];

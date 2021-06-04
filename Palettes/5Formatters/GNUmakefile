@@ -37,6 +37,7 @@ PALETTE_NAME = 5Formatters
 	date_interval_formatter.tiff \
 	energy_formatter.tiff \
 	measurement_formatter.tiff \
+	length_formatter.tiff \
 	palette.table
 
 5Formatters_STANDARD_INSTALL = no
